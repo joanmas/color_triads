@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatic Pigment Combination Picker</title>
+  <style>p {font-size:  70px; font-family: Consolas; padding: 15px; border:  1px dotted gray; background-color:  lightgoldenrodyellow;}
+</style>
+</head>
+<body>
+
+  <script>
+    // Function to randomly pick an item from a given list
+    function getRandomItem(list) {
+      const randomIndex = Math.floor(Math.random() * list.length);
+      return list[randomIndex];
+    }
+
+    // Define the lists
+    const lists = {
+      Y: ['PY97', 'PY154', 'PY35', 'PY3', 'PY43', 'PY42', 'PY108', 'PY65', 'PY110', 'PY153', 'PY184', 'PY129', 'PY53', 'PY40'],
+      O: ['PO49', 'PO62', 'PO73', 'PO71', 'PO20', 'PO48'],
+      R: ['PR255', 'PR254', 'PR108', 'PR112', 'PR209', 'PR122', 'PR188', 'PR202', 'PR170', 'PR175', 'RHODONITE', 'PR179', 'PR101', 'PR101transp', 'PR101lunar red rock', 'PR206'],
+      V: ['PV19 PURPLE', 'PV VIOLET',  'PV14', 'PV49', 'PV16', 'PV23', 'PV IMPERIAL PURPLE', 'PV17', 'PV15'],
+      B: ['PB15:6', 'PB36', 'PB28', 'PB74', 'PB29', 'PB27', 'PB15', 'PB16', 'PB35', 'PB60'],
+      G: ['AMAZONITE', 'UNDERSEA GREEN', 'SKIPS GREEN', 'PG50', 'PG7', 'PG36', 'PG18', 'PG17', 'YELLOW GREEN', 'PERMANENT GREEN LIGHT'],
+      BR: ['VAN DYK BROWN', 'PBR24', 'RAW SIENNA', 'BURNT SIENNA', 'RAW UMBER', 'BURNT UMBER', 'MONTE AMIATA SIENNA', 'PBR11 LUNAR EARTH', 'SEPIA'],
+      W: ['TITANIUM WHITE', 'PW6:1 BUFF TITANIUM'],
+      BK: ['BLACK'],
+    };
+
+    // Function to run the automatic combination script
+    function runAutomaticCombinationScript() {
+      // Define the three list combinations
+      const listCombinations = [
+        ['Y', 'R', 'B'],
+        ['O', 'G', 'V'],
+        ['BR', 'Y', 'B'],
+      ];
+
+      // Randomly choose one of the three list combinations
+      const chosenCombination = getRandomItem(listCombinations);
+
+      // Automatically pick one item from each chosen list
+      const automaticItems = chosenCombination.map(category => getRandomItem(lists[category]));
+
+      // Display the result in the HTML body with separate lines
+      automaticItems.forEach(item => {
+        const resultElement = document.createElement('p');
+        resultElement.textContent = item;
+        document.body.appendChild(resultElement);
+      });
+    }
+
+    // Run the automatic combination script
+    runAutomaticCombinationScript();
+  </script>
+
+</body>
+</html>
